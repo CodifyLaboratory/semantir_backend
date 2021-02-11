@@ -15,16 +15,41 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import *
-from rest_framework.routers import DefaultRouter
+from core import views
+from rest_framework import routers 
+
+
+
+
+router = routers.DefaultRouter()
+# router.register(r'product', views.ProductsList, basename='Products')
+# router.register(r'blog', views.BlogsList, basename='Blogs')
+# router.register(r'partner', views.PartnersList, basename='Partners')
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', ProductsList.as_view()),
-    path('blogs/', BlogsList.as_view()),
-    path('partners/', PartnersList.as_view()),
-    path('users/', UserProfileList.as_view()),
-    path('users/create/', UserProfileListCreateView.as_view()),
-    path('users/update-destroy-retrieve/', UserProfileDetailView.as_view())
-
+    path('products/all/', views.ProductsList.as_view()),
+    path('blogs/all/', views.BlogsList.as_view()),
+    path('partners/all/', views.PartnersList.as_view()),
+    path('products/add/', views.ProductsCreate.as_view()),
+    path('blogs/add/', views.BlogsCreate.as_view()),
+    path('partners/add/', views.PartnersCreate.as_view()),
+    path('products/<pk>/', views.ProductsDetail.as_view()),
+    path('blogs/<pk>/', views.BlogsDetail.as_view()),
+    path('partners/<pk>/', views.PartnersDetail.as_view()),
+    path('products/<pk>/update/', views.ProductsUpdate.as_view()),
+    path('blogs/<pk>/update/', views.BlogsUpdate.as_view()),
+    path('partners/<pk>/update/', views.PartnersUpdate.as_view()),
+    path('products/<pk>/destroy/', views.ProductsDestroy.as_view()),
+    path('blogs/<pk>/destroy/', views.BlogsDestroy.as_view()),
+    path('partners/<pk>/destroy/', views.PartnersDestroy.as_view()),
+    path("auth/", include('djoser.urls')),
+    path("auth/", include('djoser.urls.authtoken')),
+    path("auth/", include('djoser.urls.jwt')),
+    path("keytext/create/", views.KeyTextCreate.as_view()),
+    
 ]
+
+urlpatterns += router.urls

@@ -16,8 +16,12 @@ class PartnersSerializer(serializers.ModelSerializer):
         model = Partners
         fields = ["id","partners_image"]
 
-class userProfileSerializer(serializers.ModelSerializer):
-    user=serializers.StringRelatedField(read_only=True)
+class KeyTextSerializer(serializers.ModelSerializer):
     class Meta:
-        model=userProfile
-        fields='__all__'
+        model = KeyText
+        fields = ["key_word", "created_keytext_date"]
+
+class GenTextSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GenText
+        fields = ["gen_text", "created_gentext_date"]
