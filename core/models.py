@@ -1,7 +1,7 @@
 from django.db import models
 
 class KeyText(models.Model):
-    key_word = models.CharField(max_length=250, verbose_name="Ключевое слово")
+    word = models.CharField(max_length=250, verbose_name="Ключевое слово")
     created_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     gen_text = models.OneToOneField(
         to="GenText",
