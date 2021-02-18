@@ -1,2 +1,4 @@
 venv/
 semantir/settings.py
+__pycache__/
+*.pyc
