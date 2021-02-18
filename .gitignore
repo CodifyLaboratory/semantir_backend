@@ -2,3 +2,4 @@ venv/
 semantir/settings.py
 __pycache__/
 *.pyc
+db.sqlite3
