@@ -20,5 +20,6 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('key-text/create/', views.KeyTextCreateView.as_view(), name='create-key-text'),
+    path('gen-text/retrieve/', views.GenTextRetrieveView.as_view(), name='retrieve-gen-text'),
 
 ]
