@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from .models import KeyText, GenText
-from core.serializers import KeyTextSerializer, GenTextSerializers
+from core.serializers import KeyTextSerializer, GenTextSerializer
 
 
 class KeyTextCreateView(CreateAPIView):
@@ -10,6 +10,6 @@ class KeyTextCreateView(CreateAPIView):
     
 
 class GenTextRetrieveView(RetrieveAPIView):
-    queryset = KeyText.objects.all()
-    serializer_class = KeyTextSerializer    
+    queryset = GenText.objects.all()
+    serializer_class = GenTextSerializer    
 
