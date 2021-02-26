@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from core import views
 from core.models import User
+from rest_framework import routers
+
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +28,13 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
     path('auth/', include('djoser.urls.jwt')),
+    path('products/all/', views.ProductsList.as_view()),
+    path('blogs/all/', views.BlogsList.as_view()),
+    path('partners/all/', views.PartnersList.as_view()),
+    path('products/<pk>/', views.ProductsRetrieve.as_view()),
+    path('blogs/<pk>/', views.BlogsRetrieve.as_view()),
+    path('partners/<pk>/', views.PartnersRetrieve.as_view()),
 
 ]
+
+urlpatterns += router.urls
