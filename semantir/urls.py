@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core import views
+from .models import User
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('key-text/create/', views.KeyTextCreateView.as_view(), name='create-key-text'),
     path('gen-text/retrieve/<int:pk>/', views.GenTextRetrieveView.as_view(), name='retrieve-gen-text'),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
 
 ]
