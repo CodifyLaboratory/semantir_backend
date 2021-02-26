@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, 
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView
 from .models import KeyText, GenText, Blogs, Partners, Products
 from core.serializers import KeyTextSerializer, GenTextSerializer, ProductsSerializer, BlogsSerializer, PartnersSerializer
 from rest_framework import viewsets, permissions
