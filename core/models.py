@@ -14,7 +14,7 @@ class KeyText(models.Model):
     )
 
     def __str__(self):
-        return self.key_word
+        return self.word
 
 
 class GenText(models.Model):
