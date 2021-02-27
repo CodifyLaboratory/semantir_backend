@@ -1,5 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    username = None
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
 
 class KeyText(models.Model):
     word = models.CharField(max_length=250, verbose_name="Ключевое слово")
@@ -20,34 +28,19 @@ class KeyText(models.Model):
 class GenText(models.Model):
     gen_text = models.TextField(verbose_name="Сгенерированный текст")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата добавления")        
-    
-class User(models.Model):
-    user = models.ForeignKey(KeyText, on_delete=models.CASCADE, related_name="profile")
-    email = models.EmailField(blank=False, max_length=254, )
-    date_joined=models.DateTimeField(auto_now_add=True)
-    is_organizer=models.BooleanField(default=False)
 
 
-class Products(models.Model):
-    user = models.ForeignKey(
-        to=User,
-        related_name="order",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
+class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название продукта")
     text = models.TextField(max_length=400, verbose_name="Текст")
     image = models.ImageField(verbose_name="Фотография продукта")
 
-class Blogs(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок статьи")
     text = models.TextField(verbose_name="Текст статьи")
     publicated_date = models.DateTimeField(auto_now_add=True, null=True, )
     blogs_image = models.ImageField(verbose_name="Фотография для статьи")
-    class Meta:
-        verbose_name = "Блог"
-        verbose_name_plural = "Блоги"
     
-class Partners(models.Model):
+    
+class Partner(models.Model):
     partners_image = models.ImageField(verbose_name="Фотография партнера")

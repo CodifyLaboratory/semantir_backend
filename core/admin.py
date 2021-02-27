@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import KeyText, GenText, User, Products, Blogs, Partners
+from .models import KeyText, GenText, User, Product, Blog, Partner
 
 admin.site.register(KeyText)
 admin.site.register(GenText)
 admin.site.register(User)
-admin.site.register(Products)
-admin.site.register(Blogs)
-admin.site.register(Partners)
+admin.site.register(Product)
+admin.site.register(Blog)
+admin.site.register(Partner)
 # Register your models here.

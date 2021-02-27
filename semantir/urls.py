@@ -31,9 +31,9 @@ urlpatterns = [
     path('products/all/', views.ProductsList.as_view()),
     path('blogs/all/', views.BlogsList.as_view()),
     path('partners/all/', views.PartnersList.as_view()),
-    path('products/<pk>/', views.ProductsRetrieve.as_view()),
-    path('blogs/<pk>/', views.BlogsRetrieve.as_view()),
-    path('partners/<pk>/', views.PartnersRetrieve.as_view()),
+    path('product/<pk>/', views.ProductsRetrieve.as_view()),
+    path('blog/<pk>/', views.BlogsRetrieve.as_view()),
+    path('partner/<pk>/', views.PartnersRetrieve.as_view()),
 
 ]
 
