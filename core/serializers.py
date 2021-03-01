@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import KeyText, GenText, Products, Blogs, Partners
+from .models import KeyText, GenText, Product, Blog, Partner
 
 class KeyTextSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,16 +13,16 @@ class GenTextSerializer(serializers.ModelSerializer):
 
 class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Products
+        model = Product
         fields = ["id","name", "text", "image"]
 
 class BlogsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Blogs
+        model = Blog
         fields = ["id","title", "text", "publicated_date", "blogs_image"]
 
 
 class PartnersSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Partners
+        model = Partner
         fields = ["id","partners_image"]                
