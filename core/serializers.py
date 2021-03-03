@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import KeyText, GenText, Product, Blog, Partner
+from .models import KeyText, GenText, Product, Blog, Partner, Tariff
 
 class KeyTextSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,3 +26,8 @@ class PartnersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         fields = ["id","partners_image"]                
+
+class TariffsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tariff
+        fields = ["id","name", "cost", "image"]         
