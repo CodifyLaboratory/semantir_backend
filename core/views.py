@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView
 from .models import KeyText, GenText, Blog, Partner, Product
-from core.serializers import KeyTextSerializer, GenTextSerializer, ProductsSerializer, BlogsSerializer, PartnersSerializer
+from core.serializers import KeyTextSerializer, GenTextSerializer, ProductsSerializer, BlogsSerializer, PartnersSerializer, TariffsSerializer
 from rest_framework import viewsets, permissions
 
 
@@ -43,4 +43,14 @@ class PartnersRetrieve(RetrieveAPIView):
     queryset = Partner.objects.all()
     serializer_class = PartnersSerializer
     permission_classes = [permissions.AllowAny]
+
+class TariffsList(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = TariffsSerializer
+    permission_classes = [permissions.AllowAny]
+
+class TariffsRetrieve(RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = TariffsSerializer
+    permission_classes = [permissions.AllowAny]    
 
