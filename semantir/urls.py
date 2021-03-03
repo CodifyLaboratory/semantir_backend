@@ -18,6 +18,22 @@ from django.urls import path, include
 from core import views
 from core.models import User
 from rest_framework import routers
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Contact list API",
+      default_version='v1',
+      description="An api for contacts",
+      terms_of_service="http://127.0.0.1:8000/terms/",
+      contact=openapi.Contact(email="contact@contacts.remote"),
+      license=openapi.License(name="Test License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 router = routers.DefaultRouter()
 
@@ -36,6 +52,8 @@ urlpatterns = [
     path('blog/<pk>/', views.BlogsRetrieve.as_view()),
     path('partner/<pk>/', views.PartnersRetrieve.as_view()),
     path('tariff/<pk>/', views.TariffsRetrieve.as_view()),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path("redoc", schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
 ]
 

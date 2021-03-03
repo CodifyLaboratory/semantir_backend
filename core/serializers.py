@@ -30,4 +30,4 @@ class PartnersSerializer(serializers.ModelSerializer):
 class TariffsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tariff
-        fields = ["id","name", "cost", "image"]         
+        fields = ["id","name", "price", "image"]         
